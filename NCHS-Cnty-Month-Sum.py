@@ -50,9 +50,9 @@ countyfips = pd.read_csv("countyfips.csv")
 # In[5]:
 
 
-for filename in os.listdir('/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSin/'):
+for filename in os.listdir('.../dataNCHSin/'):
     if filename.endswith(".txt"):
-        with open('/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSin/'+filename) as f:
+        with open('.../dataNCHSin/'+filename) as f:
             data = pd.read_csv(f, sep = "\t", header=None)
             headerName=["case"]
             data.columns=headerName
@@ -257,7 +257,7 @@ for filename in os.listdir('/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSin/'
             index_void = df_merged[ df_merged['county'] == "0"].index
             df_merged.drop(index_void, inplace=True)
 
-            df_merged.to_csv('/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSout/' + filename.strip("US.AllCnty.txt") + 'CntySumMonth.csv')
+            df_merged.to_csv('.../dataNCHSout/' + filename.strip("US.AllCnty.txt") + 'CntySumMonth.csv')
 
 print("Done")
 
@@ -267,7 +267,7 @@ print("Done")
 # In[6]:
 
 
-os.chdir("/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSout/")
+os.chdir(".../dataNCHSout/")
 extension = 'csv'
 all_file = [i for i in glob.glob('*.{}'.format(extension))]
 appended = pd.concat([pd.read_csv(f) for f in all_file ])
