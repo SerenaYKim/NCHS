@@ -48,7 +48,7 @@ statefips['state']=statefips.state_name
 # In[5]:
 
 
-population = pd.read_csv("/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSFilter/seer_county_pop_2000_2018.csv")
+population = pd.read_csv("...seer_county_pop_2000_2018.csv")
 poptot = pd.merge(statefips, population, how='left', on=['state_abbr'])
 poptot = poptot.rename(columns={'state_name': 'state'})
 
@@ -58,9 +58,9 @@ poptot = poptot.rename(columns={'state_name': 'state'})
 # In[6]:
 
 
-for filename in os.listdir('/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSin/'):
+for filename in os.listdir('.../dataNCHSin/'):
     if filename.endswith(".txt"):
-        with open('/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSin/'+filename) as f:
+        with open('.../dataNCHSin/'+filename) as f:
             data = pd.read_csv(f, sep = "\t", header=None)
             headerName=["case"]
             data.columns=headerName
@@ -346,7 +346,7 @@ for filename in os.listdir('/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSin/'
             index_void = df_merged[ df_merged['county'] == "0"].index
             df_merged.drop(index_void, inplace=True)
 
-            df_merged.to_csv('/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSout/' + filename.strip("US.AllCnty.txt") + 'CntySumMonth.csv')
+            df_merged.to_csv('.../dataNCHSout/' + filename.strip("US.AllCnty.txt") + 'CntySumMonth.csv')
 
 print("Done")
 
@@ -356,7 +356,7 @@ print("Done")
 # In[7]:
 
 
-os.chdir("/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSout/")
+os.chdir(".../dataNCHSout/")
 extension = 'csv'
 all_file = [i for i in glob.glob('*.{}'.format(extension))]
 appended = pd.concat([pd.read_csv(f) for f in all_file ])
@@ -367,7 +367,7 @@ appended = appended.drop(columns=['Unnamed: 0'])
 # In[28]:
 
 
-population = pd.read_csv("/Users/serenakim/Dropbox/10-opioid-2019/dataNCHSFilter/seer_county_pop_2000_2018.csv")
+population = pd.read_csv(".../seer_county_pop_2000_2018.csv")
 poptot = pd.merge(statefips, population, how='left', on=['state_abbr'])
 poptot = poptot.drop(columns=['state_name'])
 
@@ -400,7 +400,7 @@ df_pop_merged = df_pop_merged.opioid_death/df_pop_merged.poptot
 # In[25]:
 
 
-df_pop_merged.to_csv( "/Users/serenakim/Dropbox/10-opioid-2019/dataNCHS/2005_2018CntySumMonth.csv", index=False, encoding='utf-8-sig')
+df_pop_merged.to_csv( ".../2005_2018CntySumMonth.csv", index=False, encoding='utf-8-sig')
 
 
 # In[ ]:
